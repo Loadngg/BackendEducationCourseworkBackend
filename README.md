@@ -44,3 +44,5 @@ npm run start:dev
 ```
 
 The API will be available at `http://localhost:3000`.
+
+The SWAGGER will be available at `http://localhost:3000/api`.
