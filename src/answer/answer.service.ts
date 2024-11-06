@@ -12,6 +12,7 @@ export class AnswerService {
 				userId,
 				questionId: dto.questionId,
 				answerId: dto.answerId,
+				isCorrect: dto.isCorrect,
 			},
 		})
 	}

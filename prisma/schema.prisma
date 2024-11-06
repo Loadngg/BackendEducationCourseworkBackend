@@ -87,6 +87,8 @@ model UserAnswer {
   answer   QuestionAnswer @relation(fields: [answerId], references: [id])
   answerId String         @map("answer_id")
 
+  isCorrect Boolean @default(false) @map("is_correct")
+
   @@map("user_answer")
 }
 

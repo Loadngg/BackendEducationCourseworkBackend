@@ -24,7 +24,7 @@ export class UserController {
 
 	@UsePipes(new ValidationPipe())
 	@HttpCode(200)
-	@Post()
+	@Post('/result')
 	@Auth()
 	async create(@Body() dto: UserQuizDto, @CurrentUser('id') userId: string) {
 		return this.userService.createResult(dto, userId)
