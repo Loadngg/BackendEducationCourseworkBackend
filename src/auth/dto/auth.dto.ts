@@ -9,7 +9,7 @@ export class AuthDto {
 	@ApiProperty()
 	@IsString()
 	@MinLength(6, {
-		message: 'Password must be at least 6 characters long',
+		message: 'Пароль должен быть минимум 6 символов',
 	})
 	password: string
 }
