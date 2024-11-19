@@ -6,7 +6,11 @@ export class QuizService {
 	constructor(private prisma: PrismaService) {}
 
 	async getAll() {
-		return this.prisma.quiz.findMany()
+		return this.prisma.quiz.findMany({
+			include: {
+				questions: true,
+			},
+		})
 	}
 
 	async getById(id: string) {
