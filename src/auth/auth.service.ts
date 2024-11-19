@@ -33,7 +33,10 @@ export class AuthService {
 
 	async register(dto: AuthDto) {
 		const oldUser = await this.userService.getByLogin(dto.login)
-		if (oldUser) throw new BadRequestException('User already exists')
+		if (oldUser)
+			throw new BadRequestException(
+				'Пользователь с таким логином уже существует'
+			)
 
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		const { password, ...user } = await this.userService.create(dto)
@@ -75,10 +78,10 @@ export class AuthService {
 
 	private async validateUser(dto: AuthDto) {
 		const user = await this.userService.getByLogin(dto.login)
-		if (!user) throw new NotFoundException('User not found')
+		if (!user) throw new NotFoundException('Пользователь не найден')
 
 		const isValid = await verify(user.password, dto.password)
-		if (!isValid) throw new UnauthorizedException('Invalid password')
+		if (!isValid) throw new UnauthorizedException('Некорректный пароль')
 
 		return user
 	}

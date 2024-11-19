@@ -51,7 +51,7 @@ export class AuthController {
 
 		if (!refreshTokenFromCookies) {
 			this.authService.removeRefreshTokenToResponse(res)
-			throw new UnauthorizedException('Refresh token nto passed')
+			throw new UnauthorizedException('Refresh token not passed')
 		}
 
 		const { refreshToken, ...response } = await this.authService.getNewTokens(
