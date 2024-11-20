@@ -8,6 +8,10 @@ export class AnswerDto {
 
 	@ApiProperty()
 	@IsString()
+	quizId: string
+
+	@ApiProperty()
+	@IsString()
 	answerId: string
 
 	@ApiProperty()

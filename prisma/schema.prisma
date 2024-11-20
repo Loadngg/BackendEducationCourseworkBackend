@@ -47,7 +47,8 @@ model QuizQuestion {
   quiz   Quiz   @relation(fields: [quizId], references: [id])
   quizId String @map("quiz_id")
 
-  answers QuestionAnswer[]
+  answers     QuestionAnswer[]
+  userAnswers UserAnswer[]
 
   @@map("quiz_question")
 }
@@ -81,8 +82,11 @@ model UserAnswer {
   user   User   @relation(fields: [userId], references: [id])
   userId String @map("user_id")
 
-  question   Quiz   @relation(fields: [questionId], references: [id])
-  questionId String @map("question_id")
+  question   QuizQuestion @relation(fields: [questionId], references: [id])
+  questionId String       @map("question_id")
+
+  quiz   Quiz   @relation(fields: [quizId], references: [id])
+  quizId String @map("quiz_id")
 
   answer   QuestionAnswer @relation(fields: [answerId], references: [id])
   answerId String         @map("answer_id")

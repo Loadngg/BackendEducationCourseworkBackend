@@ -1,7 +1,9 @@
 import {
 	Body,
 	Controller,
+	Get,
 	HttpCode,
+	Param,
 	Post,
 	UsePipes,
 	ValidationPipe,
@@ -14,6 +16,12 @@ import { AnswerDto } from './dto/answer.dto'
 @Controller('answer')
 export class AnswerController {
 	constructor(private readonly answerService: AnswerService) {}
+
+	@Get(':id')
+	@Auth()
+	async getById(@Param('id') quizId: string, @CurrentUser('id') userId: string) {
+		return this.answerService.getById(quizId, userId)
+	}
 
 	@UsePipes(new ValidationPipe())
 	@HttpCode(200)
